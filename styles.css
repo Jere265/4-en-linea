@@ -27,4 +27,132 @@ body {
     height: var(--tamanio-de-celda);
     background-color: black;
     border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    
 }
+
+.celda::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--tamanio-de-celda)*.9);
+    height: calc(var(--tamanio-de-celda)*.9);
+    background-color: white;
+    border-radius: 50%;
+}
+
+.celda.ficharoja,
+.celda.fichaazul {
+    cursor: not-allowed;
+}
+
+.celda.ficharoja::before {
+    background-color: rgb(209, 26, 26);
+}
+
+.celda.ficharoja::after {
+    background-color: red;
+}
+
+.celda.fichaazul::before {
+    background-color: rgb(22, 22, 204);
+}
+
+.celda.fichaazul::after {
+    background-color: blue;
+}
+
+.tablero.ficharoja .celda:not(.ficharoja):not(.fichaazul):hover::before {
+    background-color: rgb(211, 104, 104);
+}
+
+.tablero.ficharoja .celda:not(.ficharoja):not(.fichaazul):hover::after {
+    background-color: rgb(255, 126, 126);
+}
+
+.tablero.fichaazul .celda:not(.ficharoja):not(.fichaazul):hover::before {
+    background-color: rgb(98, 98, 206);
+}
+
+.tablero.fichaazul .celda:not(.ficharoja):not(.fichaazul):hover::after {
+    background-color: rgb(119, 119, 252);
+}
+
+.celda.ficharoja::before,
+.celda.ficharoja::after,
+.tablero.ficharoja .celda:not(.ficharoja):not(.fichaazul):hover::before,
+.tablero.ficharoja .celda:not(.ficharoja):not(.fichaazul):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.celda.ficharoja::before,
+.tablero.ficharoja .celda:not(.ficharoja):not(.fichaazul):hover::before {
+    width: var(--tamanio-de-ficha);
+    height: var(--tamanio-de-ficha);
+}
+
+.celda.ficharoja::after,
+.tablero.ficharoja .celda:not(.ficharoja):not(.fichaazul):hover::after {
+    width: calc(var(--tamanio-de-ficha) * .7);
+    height: calc(var(--tamanio-de-ficha) * .7);
+}
+
+
+.celda.fichaazul::before,
+.celda.fichaazul::after,
+.tablero.fichaazul .celda:not(.ficharoja):not(.fichaazul):hover::before,
+.tablero.fichaazul .celda:not(.ficharoja):not(.fichaazul):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.celda.fichaazul::before,
+.tablero.fichaazul .celda:not(.ficharoja):not(.fichaazul):hover::before {
+    width: var(--tamanio-de-ficha);
+    height: var(--tamanio-de-ficha);
+}
+
+.celda.fichaazul::after,
+.tablero.fichaazul .celda:not(.ficharoja):not(.fichaazul):hover::after {
+    width: calc(var(--tamanio-de-ficha) * .7);
+    height: calc(var(--tamanio-de-ficha) * .7);
+}
+
+.mensaje-de-ganador {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+  }
+  
+  .mensaje-de-ganador button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+  }
+  
+  .mensaje-de-ganador button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+  }
+  
+  .mensaje-de-ganador.show {
+    display: flex;
+  }
